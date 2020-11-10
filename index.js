@@ -166,7 +166,7 @@ function getParkInfo(requestedStates, maxResults) {
 function watchFormSubmission() {
     console.log('Ran watchFormSubmission function.');
 
-    $('form').on('submit', function(event) {
+    $('main').on('submit', '.js-query-form', function(event) {
         event.preventDefault();
         console.log('You submitted the form');
 
@@ -200,6 +200,9 @@ function watchFormReset() {
         // Hide the reset button and results.
         $('.reset-button').addClass('hidden');
         $('.results').addClass('hidden');
+
+        // Clear out the results list.
+        $('.js-results-list').empty();
 
         // Freshly render the form.
         renderParksForm();
