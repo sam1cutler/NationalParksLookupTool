@@ -76,17 +76,23 @@ function displayResults(responseJson) {
         $('.js-results-list').append(
             `<li><h3>${responseJson.data[i].fullName}</h3>
             <ul>
-                <li>Park description: ${responseJson.data[i].description}</li>
+                <li>${responseJson.data[i].description}</li>
                 <li>Park website: <a href=${responseJson.data[i].url} target="_blank">${responseJson.data[i].url}</a></li>
             </ul>
             </li>`)
     }
 
-    // Make "results" section visible
+    // Reveal the "results" section.
     $('.results').removeClass('hidden');
 
-    // Make the "clear form" button visible
-    $('.clear-button').removeClass('hidden');
+    // Reveal the "reset form" button.
+    $('.reset-button').removeClass('hidden');
+
+    // Hide the search form.
+    $('.js-query-form').addClass('hidden');
+
+    // Scroll to the top of the page.
+    $(window).scrollTop(0);
 
 }
 
@@ -176,18 +182,48 @@ function watchFormSubmission() {
 }
 
 // Function to set up the event listener on clearing the form
-function watchFormClear() {
-    console.log('Ran watchFormClear function.');
+function watchFormReset() {
+    console.log('Ran watchFormReset function.');
 
-    $('.clear-button').on('click', function(event) {
+    $('.reset-button').on('click', function(event) {
         console.log('User requested to clear the form.');
-        event.preventDefault(); 
+        event.preventDefault();
+        
+        // Hide the reset button and results.
+        $('.reset-button').addClass('hidden');
+        $('.results').addClass('hidden');
+
+        // Freshly render the form.
+        renderParksForm();
+
+        // Reveal the form.
+        $('.js-query-form').removeClass('hidden');
     })
 }
 
+function renderParksForm() {
+    console.log('Ran renderParksForm function.')
+
+    // Initialize empty HTML form string
+    let stateOptionsHTML = '';
+
+    for (let i=0 ; i<statesList.length ; i++) {
+        let activeAbbrev = statesList[i][0].toLowerCase();
+        let activeState = statesList[i][1];
+        stateOptionsHTML += `
+            <input name="${activeAbbrev}" type="checkbox" id="${activeAbbrev}">
+            <label for="${activeAbbrev}">${activeState}</label><br>`;
+    };
+
+    $('.js-state-options-target').html(stateOptionsHTML);
+
+}
+
+
 function handleLookUpPage() {
+    renderParksForm();
     watchFormSubmission();
-    watchFormClear();
+    watchFormReset();
 }
 
 $(handleLookUpPage);
