@@ -1,5 +1,19 @@
 /*--- main body styles ---*/
 
 * {
-    box-sizing: border-box;
-  }
+  box-sizing: border-box;
+}
+
+button, input[type="text"] {
+  padding: 5px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 20 auto;
+  padding: 20px;
+}
+
+.hidden {
+  display: none;
+}

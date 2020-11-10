@@ -1,7 +1,7 @@
-# New Project Title
+# US National Parks Lookup Tool
 
 ## General Description
-This is a something. 
+This app allows users to lookup national parks by state. 
 
 ## Contact me
 You can find [my GitHub page here](https://github.com/sam1cutler).

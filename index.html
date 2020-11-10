@@ -5,15 +5,48 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>New Project</title>
+  <title>National Park Lookup Tool</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet"
     type="text/css" />
   <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-    <main>
-        <h1>New project.</h1>
+    <main class="container">
+        <h1>US National Parks Lookup Tool</h1>
+
+        <h3>This tool will allow you to find national parks in one or more states.</h3>
+
+        <form class="query-form">
+          <!-- States? -->
+          <p>In what states would you like to search?</p>
+          <input name="wa" type="checkbox" id="wa">
+            <label for="wa">Washington</label><br>
+          <input name="ca" type="checkbox" id="ca">
+            <label for="ca">California</label><br>
+          <input name="or" type="checkbox" id="or">
+            <label for="or">Oregon</label><br><br>
+
+          <!-- max search results to show? -->
+          <label for="js-max-results">How many results would you like to see?</label>
+          <input type="number" id="js-max-results" min=1 value=10><br><br>
+
+          <!-- submit button -->
+          <button type="submit">Submit</button>
+        </form>
+
+        <p id="js-error-message" class="error-message"></p>
+
+        <section class="results hidden">
+          <h2>Here is your requested list of national parks:</h2>
+          <ul class="js-results-list"></ul>
+        </section>
+
+        <form class="reset-form">
+          <!-- "reset" button -->
+        </form>
+
+
     </main>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.js" crossorigin="anonymous"></script>
     <script src="index.js"></script>
