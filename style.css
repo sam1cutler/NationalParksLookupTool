@@ -17,3 +17,7 @@ button, input[type="text"] {
 .hidden {
   display: none;
 }
+
+.clear-button {
+  margin-top: 20px;
+}
