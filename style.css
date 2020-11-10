@@ -21,3 +21,8 @@ button, input[type="text"] {
 .clear-button {
   margin-top: 20px;
 }
+
+#js-error-message {
+  color: red;
+  font-size: 20px;
+}

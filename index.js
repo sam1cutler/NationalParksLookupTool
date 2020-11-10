@@ -91,6 +91,9 @@ function displayResults(responseJson) {
     // Hide the search form.
     $('.js-query-form').addClass('hidden');
 
+    // Empty error message.
+    $('#js-error-message').empty();
+
     // Scroll to the top of the page.
     $(window).scrollTop(0);
 
@@ -176,8 +179,13 @@ function watchFormSubmission() {
         const maxResults = $('#js-max-results').val()
         console.log(maxResults);
         
-        // Provide submitted info as arguments to getParkInfo function
-        getParkInfo(requestedStates, maxResults);
+        // Confirm that user selected a state.
+        if (requestedStates.length === 0) {
+            $('#js-error-message').text(`Please select at least one state to search in.`);
+        } else {
+            // Provide submitted info as arguments to getParkInfo function
+            getParkInfo(requestedStates, maxResults);
+        };
     })
 }
 
